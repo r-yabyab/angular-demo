@@ -2,12 +2,16 @@
 <div>
     <p>search-bar works!</p>
 
-    <input type="text" placeholder="type here" 
+    <input 
+        type="text" 
+        placeholder="type here" 
         class="border-2"
+        (keydown.enter)=onSearch()
+        [(ngModel)]="searchTerm"
     />
     <button 
         class="border border-gray-400 px-4 py-2 rounded hover:bg-gray-100"
-        (click)="getData()"
+        (click)=getData()
     >
         This is a button
     </button>
