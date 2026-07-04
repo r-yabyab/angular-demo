@@ -23,6 +23,15 @@
         get products
     </button>
     
+    @if (currentPage > 0) {
+        <button 
+            class="border border-gray-400 px-4 py-2 rounded hover:bg-gray-100 mt-4"
+            (click)="backPage()"
+        >
+            Back
+        </button>
+    }
+    
     @if (products.length > 0) {
         <button 
             class="border border-gray-400 px-4 py-2 rounded hover:bg-gray-100 mt-4"

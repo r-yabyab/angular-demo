@@ -50,4 +50,9 @@ export class SearchBar {
     this.getProducts()
   }
 
+  backPage() {
+    this.currentPage--
+    this.getProducts()
+  }
+
 }
