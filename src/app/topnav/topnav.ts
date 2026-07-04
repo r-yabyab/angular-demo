@@ -17,4 +17,8 @@ export class Topnav {
   goToUsers() {
     this.router.navigate(['/users'])
   }
+
+  goToHome() {
+    this.router.navigate(['/'])
+  }
 }

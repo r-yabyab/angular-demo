@@ -32,7 +32,22 @@ export class SearchBar {
 
   onSearch() {
     this.getData(this.searchTerm);
-    this.searchTerm = '';
+    this.searchProducts();
+  }
+
+  // need to paginate this separately
+  searchProducts() {
+    if (!this.searchTerm.trim()) {
+      return;
+    }
+
+    this.http.get(`https://dummyjson.com/products/search?q=${this.searchTerm}`)
+      .subscribe((data: any) => {
+        console.log(data.products)
+        this.products = data.products
+        this.currentPage = 0
+        this.cdr.detectChanges()
+      })
   }
 
   getProducts() {

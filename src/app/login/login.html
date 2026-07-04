@@ -1,5 +1,4 @@
 <div>
-    <p>login works!</p>
 
     @if (errorMessage) {
         <p class="text-red-600 font-semibold">{{ errorMessage }}</p>
@@ -16,6 +15,8 @@
         [(ngModel)] = "password"
         
     />
+
+    <p>hint: username: emilys, password: emilyspass</p>
 
     @if (username.length && password.length > 0) {
         <button 
