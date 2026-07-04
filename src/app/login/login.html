@@ -1,0 +1,22 @@
+<div>
+    <p>login works!</p>
+
+    <input 
+        type="text"
+        placeholder="username"
+        [(ngModel)] = "username"
+    />
+    <input 
+        type="text"
+        placeholder="password"
+        [(ngModel)] = "password"
+        
+    />
+
+    @if (username.length && password.length > 0) {
+        <button class="bg-amber-300 border-2">
+            login
+        </button>
+    }
+
+</div>
