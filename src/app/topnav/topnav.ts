@@ -13,4 +13,8 @@ export class Topnav {
   goToLogin() {
     this.router.navigate(['/login']);
   }
+
+  goToUsers() {
+    this.router.navigate(['/users'])
+  }
 }

@@ -1,20 +1,27 @@
 <div>
     <p>login works!</p>
 
+    @if (errorMessage) {
+        <p class="text-red-600 font-semibold">{{ errorMessage }}</p>
+    }
+
     <input 
         type="text"
         placeholder="username"
         [(ngModel)] = "username"
     />
     <input 
-        type="text"
+        type="password"
         placeholder="password"
         [(ngModel)] = "password"
         
     />
 
     @if (username.length && password.length > 0) {
-        <button class="bg-amber-300 border-2">
+        <button 
+            class="bg-amber-300 border-2"
+            (click)="loginSubmit()"
+        >
             login
         </button>
     }

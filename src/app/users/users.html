@@ -1,0 +1,16 @@
+<div>
+    <h2>Current User</h2>
+
+    @if (errorMessage) {
+        <p class="text-red-600 font-semibold">{{ errorMessage }}</p>
+    }
+
+    @if (currentUser) {
+        <div class="border rounded p-4">
+            <p><strong>Username:</strong> {{ currentUser.username }}</p>
+            <p><strong>Email:</strong> {{ currentUser.email }}</p>
+            <p><strong>First Name:</strong> {{ currentUser.firstName }}</p>
+            <p><strong>Last Name:</strong> {{ currentUser.lastName }}</p>
+        </div>
+    }
+</div>
