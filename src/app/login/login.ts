@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import { throwError } from 'rxjs';
 export class Login {
   private http = inject(HttpClient)
   private cdr = inject(ChangeDetectorRef)
+  authService = inject(AuthService)
 
   username = ""
   password = ""
@@ -37,8 +39,8 @@ export class Login {
     .subscribe(data => {
       console.log(data)
       if (data.accessToken) {
-        localStorage.setItem('accessToken', data.accessToken)
-        console.log('Token saved to localStorage')
+        this.authService.login(data.accessToken)
+        console.log('Token saved and auth state updated')
       }
       this.cdr.detectChanges()
     })

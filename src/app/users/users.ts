@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { User } from '../services/user';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-users',
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class Users {
   private userService = inject(User);
   private cdr = inject(ChangeDetectorRef);
+  private authService = inject(AuthService);
 
   currentUser: any = null;
   errorMessage = '';
@@ -20,9 +22,7 @@ export class Users {
   }
 
   loadCurrentUser() {
-    const token = localStorage.getItem('accessToken');
-    
-    if (!token) {
+    if (!this.authService.isAuthenticated()) {
       this.errorMessage = 'No valid token found. Please login first.';
       this.cdr.detectChanges();
       return;

@@ -1,12 +1,14 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class User {
   private http = inject(HttpClient);
+  private authService = inject(AuthService);
   private apiUrl = 'https://dummyjson.com';
 
   getUser(id: number): Observable<any> {
@@ -18,7 +20,7 @@ export class User {
   }
 
   getCurrentUser(): Observable<any> {
-    const token = localStorage.getItem('accessToken');
+    const token = this.authService.getToken();
     
     if (!token) {
       throw new Error('No access token found');
