@@ -16,4 +16,28 @@
         This is a button
     </button>
 
+    <button 
+        class="border border-gray-400 px-4 py-2 rounded hover:bg-gray-100"
+        (click)=getProducts()
+    >
+        get products
+    </button>
+    
+    @if (products.length > 0) {
+        <button 
+            class="border border-gray-400 px-4 py-2 rounded hover:bg-gray-100 mt-4"
+            (click)="nextPage()"
+        >
+            Next
+        </button>
+    }
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+        @for (product of products; track product.id) {
+            <app-product-card [product]="product"></app-product-card>
+        }
+    </div>
+
+
+
 </div>
